@@ -36,10 +36,10 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/btSighUp"
+            android:id="@+id/btAddAcc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign Up" />
+            android:text="Add Account" />
 
     </LinearLayout>
 

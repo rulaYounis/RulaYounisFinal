@@ -10,14 +10,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btSignUp,btSignIn;
+    Button btAddAcc,btSignIn;
     EditText etEmail,etPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btSignUp = (Button) findViewById(R.id.btSighUp);
+        btAddAcc = (Button) findViewById(R.id.btSighUp);
         btSignIn= (Button) findViewById(R.id.btSignIn);
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPassword= (EditText) findViewById(R.id.etPassword);
