@@ -15,10 +15,16 @@
         android:hint="name your alarm"
         android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/etClock"
+    <Button
+        android:id="@+id/btSetAlarm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:text="open timepicker" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="time" />
+
 </LinearLayout>

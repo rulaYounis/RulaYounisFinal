@@ -1,5 +1,6 @@
 package com.example.user.rulayounis;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     Button btAddAcc,btSignIn;
     EditText etEmail,etPassword;
 
@@ -17,8 +18,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         btAddAcc = (Button) findViewById(R.id.btAddAcc);
+
+
         btSignIn= (Button) findViewById(R.id.btSignIn);
+        btSignIn.setOnClickListener(this);
+
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPassword= (EditText) findViewById(R.id.etPassword);
     }
@@ -42,10 +48,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
 
     }
-
     @Override
     public void onClick(View v) {
-
+        Intent intent= new Intent(getApplication(),NewAlarmActivity.class);
+        startActivity(intent);
     }
 }
 
