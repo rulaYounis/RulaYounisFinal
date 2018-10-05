@@ -29,6 +29,9 @@ public class NewAlarmActivity extends AppCompatActivity implements TimePickerDia
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         TextView tvTime=(TextView) findViewById(R.id.tvTime);
-        tvTime.setText("Hour:"+hourOfDay+"minutes:"+minute);
+        tvTime.setText(hourOfDay+":"+minute);
     }
+    Button btSetDate= (Button)findViewById(R.id.btSetDate);
+
+
 }

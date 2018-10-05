@@ -50,8 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     public void onClick(View v) {
+        if(v==btSignIn){
         Intent intent= new Intent(getApplication(),NewAlarmActivity.class);
         startActivity(intent);
+        }
     }
 }
 

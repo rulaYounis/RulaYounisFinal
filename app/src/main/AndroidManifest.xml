@@ -20,7 +20,8 @@
         <activity android:name=".ListActivity" />
         <activity android:name=".ChooseAccountActivity" />
         <activity android:name=".AllAlarmsActivity" />
-        <activity android:name=".NewAlarmActivity"></activity>
+        <activity android:name=".NewAlarmActivity" />
+        <activity android:name=".NewTaskActivity"></activity>
     </application>
 
 </manifest>
