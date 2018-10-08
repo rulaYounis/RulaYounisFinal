@@ -21,7 +21,8 @@
         <activity android:name=".ChooseAccountActivity" />
         <activity android:name=".AllAlarmsActivity" />
         <activity android:name=".NewAlarmActivity" />
-        <activity android:name=".NewTaskActivity"></activity>
+        <activity android:name=".NewTaskActivity" />
+        <activity android:name=".AddActivityActivity"></activity>
     </application>
 
 </manifest>
