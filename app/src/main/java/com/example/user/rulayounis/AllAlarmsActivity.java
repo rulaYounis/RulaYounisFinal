@@ -11,8 +11,9 @@ import java.util.ArrayList;
 
 public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     ListView lvAllAlarms;
-    ArrayAdapter<String> arrayAdapter;
-    ArrayList<String> arrayList = new ArrayList<>();
+    ArrayList<Item> items;
+    CustomAdapter adapter;
+
 
 
     @Override
@@ -20,12 +21,22 @@ public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_alarms);
         lvAllAlarms= (ListView) findViewById(R.id.lvAllAlarms);
-        arrayAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arrayList);
-        lvAllAlarms.setAdapter(arrayAdapter);
+
+        items = new ArrayList<>();
+        items.add(new Item(R.drawable.alarm,"first"));
+        items.add(new Item(R.drawable.alarm,"second"));
+        items.add(new Item(R.drawable.alarm,"third"));
+        items.add(new Item(R.drawable.alarm,"fourth"));
+
+        adapter = new CustomAdapter(this,R.layout.costum_row,items);
+        lvAllAlarms.setAdapter(adapter);
+        lvAllAlarms.setOnItemClickListener(this);
+
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
 
     }
 }

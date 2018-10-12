@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(this, "item menu 1", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.item2:
-                Toast.makeText(this, "Item menu 2", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "com.example.user.rulayounis.Item menu 2", Toast.LENGTH_SHORT).show();
                 break;
         }
         return true;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v==btSignIn){
-        Intent intent= new Intent(getApplication(),NewAlarmActivity.class);
+        Intent intent= new Intent(getApplication(),AllAlarmsActivity.class);
         startActivity(intent);
         }
     }
