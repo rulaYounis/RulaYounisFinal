@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "814007885386",
+    "firebase_url": "https://rulayounis-399f8.firebaseio.com",
+    "project_id": "rulayounis-399f8",
+    "storage_bucket": "rulayounis-399f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814007885386:android:d1b35d89e3bfb5ab",
+        "android_client_info": {
+          "package_name": "com.example.user.rulayounis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814007885386-p7h78lpmof7fit29rq34dae4irriop1i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.user.rulayounis",
+            "certificate_hash": "090b37ae54543232e42d4a8a51221c2a9a993f6a"
+          }
+        },
+        {
+          "client_id": "814007885386-lnjkmjk1p126pj07s2i2v4na76a2n57b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB46oWei5uHR_w0MddbwWftMyleswAs0gs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814007885386-lnjkmjk1p126pj07s2i2v4na76a2n57b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
