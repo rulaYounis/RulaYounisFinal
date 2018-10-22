@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAuth = FirebaseAuth.getInstance();
 
         btAddAcc = (Button) findViewById(R.id.btAddAcc);
+        btAddAcc.setOnClickListener(this);
 
 
         btSignIn= (Button) findViewById(R.id.btSignIn);
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FirebaseUser currentUser = mAuth.getCurrentUser();
        // updateUI(currentUser);
     }
-    public void createUserWithEmailAndPassword(String email, String password){
+    public void createUser(String email, String password){
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -89,10 +90,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
     }
+    public void signIn(String email,String password){
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Intent intent= new Intent(getApplication(),AllAlarmsActivity.class);
+                            startActivity(intent);
+               //             updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                          //  updateUI(null);
+                        }
+
+                        // ...
+                    }
+                });
+    }
     @Override
     public void onClick(View v) {
-        if(v==btSignIn){
-           createUserWithEmailAndPassword("rula.yns@gmail.com","123456");
+        if(etEmail.getText().toString().equals("") || etPassword.getText().toString().equals("")) {
+            Toast.makeText(this, "fill all the fields", Toast.LENGTH_SHORT).show();
+        }else{
+            if (v == btAddAcc) {
+                createUser(etEmail.getText().toString(), etPassword.getText().toString());
+            } else {
+                signIn(etEmail.getText().toString(), etPassword.getText().toString());
+
+            }
         }
     }
 }
