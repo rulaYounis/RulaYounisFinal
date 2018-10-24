@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".CameraGalleryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,8 @@
         <activity android:name=".NewAlarmActivity" />
         <activity android:name=".NewTaskActivity" />
         <activity android:name=".AddActivityActivity" />
-        <activity android:name=".AllTasksActivity"></activity>
+        <activity android:name=".AllTasksActivity" />
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
