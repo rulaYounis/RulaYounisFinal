@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class CameraGalleryActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,6 +23,7 @@ public class CameraGalleryActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_gallery);
         imageView2 = (ImageView) findViewById(R.id.imageView2);
+
         btGallery = (Button) findViewById(R.id.btGallery);
         btGallery.setOnClickListener(this);
         btTakePhoto = (Button) findViewById(R.id.btTakePhoto);
@@ -43,10 +45,11 @@ public class CameraGalleryActivity extends AppCompatActivity implements View.OnC
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode== CAMERA_REQUEST && resultCode== Activity.RESULT_OK){
+       // if(requestCode== CAMERA_REQUEST && resultCode== Activity.RESULT_OK){
             Bitmap photo = (Bitmap) data.getExtras().get("date");
             imageView2.setImageBitmap(photo);
-        }
+        Toast.makeText(this, "inside capture", Toast.LENGTH_LONG).show();
+
     }
 
 }
