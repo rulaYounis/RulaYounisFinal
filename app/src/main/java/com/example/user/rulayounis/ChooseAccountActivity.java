@@ -1,5 +1,6 @@
 package com.example.user.rulayounis;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,8 +20,16 @@ public class ChooseAccountActivity extends AppCompatActivity implements AdapterV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_account);
         lvAccounts= (ListView) findViewById(R.id.lvAccounts);
+
+        arrayList.add("1");
+        arrayList.add("2");
+        arrayList.add("3");
+        arrayList.add("4");
+        arrayList.add("5");
         arrayAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arrayList);
         lvAccounts.setAdapter(arrayAdapter);
+
+        lvAccounts.setOnItemClickListener(this);
 
 
 
@@ -28,6 +37,9 @@ public class ChooseAccountActivity extends AppCompatActivity implements AdapterV
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent i = new Intent(this, NewAlarmActivity.class);
+        i.putExtra("task", arrayList.get(position).toString());
+        startActivity(i);
 
     }
 }

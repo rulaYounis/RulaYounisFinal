@@ -15,14 +15,15 @@ import android.widget.Toast;
 public class CameraGalleryActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final int CAMERA_REQUEST = 0;
-    ImageView imageView2;
+    ImageView cameraImage;
     Button btGallery,btTakePhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_gallery);
-        imageView2 = (ImageView) findViewById(R.id.imageView2);
+
+        cameraImage = (ImageView) findViewById(R.id.cameraImage);
 
         btGallery = (Button) findViewById(R.id.btGallery);
         btGallery.setOnClickListener(this);
@@ -45,11 +46,11 @@ public class CameraGalleryActivity extends AppCompatActivity implements View.OnC
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-       // if(requestCode== CAMERA_REQUEST && resultCode== Activity.RESULT_OK){
-            Bitmap photo = (Bitmap) data.getExtras().get("date");
-            imageView2.setImageBitmap(photo);
-        Toast.makeText(this, "inside capture", Toast.LENGTH_LONG).show();
-
+        if(requestCode== CAMERA_REQUEST && resultCode== Activity.RESULT_OK) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            cameraImage.setImageBitmap(photo);
+           // Toast.makeText(this, "inside capture", Toast.LENGTH_LONG).show();
+        }
     }
 
 }

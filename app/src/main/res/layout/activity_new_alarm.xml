@@ -45,4 +45,15 @@
         android:layout_height="wrap_content"
         android:text="Choose YOur Activity" />
 
+    <TextView
+        android:id="@+id/tvTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btAddAlarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Done" />
+
 </LinearLayout>
