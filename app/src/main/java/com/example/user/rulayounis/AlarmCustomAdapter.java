@@ -32,8 +32,15 @@ public class AlarmCustomAdapter extends ArrayAdapter<Alarm> {
         }
         Alarm p = getItem(position);
         if(p!= null){
-            TextView tvTitle= (TextView) v.findViewById(R.id.tvTitle);
-            tvTitle.setText(p.getName());
+            TextView tvName = (TextView) v.findViewById(R.id.tvName);
+            tvName.setText(p.getName());
+            TextView tvTime = (TextView) v.findViewById(R.id.tvTime);
+            tvTime.setText(p.getName());
+            TextView tvDate = (TextView) v.findViewById(R.id.tvDate);
+            tvDate.setText(p.getName());
+            TextView tvTask = (TextView) v.findViewById(R.id.tvTask);
+            tvTask.setText(p.getName());
+
 
             ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
             imageView.setImageResource(p.getImage());

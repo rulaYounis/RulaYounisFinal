@@ -30,7 +30,7 @@ public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.
         if(alarm != null){
             items.add(alarm);
         }
-        adapter= new AlarmCustomAdapter(this,R.layout.custom_row, items);
+        adapter= new AlarmCustomAdapter(this,R.layout.alarmcustom_row, items);
 
         lvAllAlarms.setAdapter(adapter);
         lvAllAlarms.setOnItemClickListener(this);
