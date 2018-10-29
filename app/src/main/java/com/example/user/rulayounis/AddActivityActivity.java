@@ -14,21 +14,18 @@ public class AddActivityActivity extends AppCompatActivity implements AdapterVie
         ArrayAdapter<String> arrayAdapter;
         ArrayList<String> arrayList = new ArrayList<>();
 
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_account);
-        lvActivities= (ListView) findViewById(R.id.lvActivities);
-        arrayAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arrayList);
-        lvActivities.setAdapter(arrayAdapter);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_choose_account);
+                lvActivities= (ListView) findViewById(R.id.lvActivities);
+                arrayAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arrayList);
+                lvActivities.setAdapter(arrayAdapter);
+       }
 
-
-
-        }
-
-@Override
-public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         }
-        }
+}
 

@@ -20,7 +20,7 @@ import java.util.Calendar;
 public class NewAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener,View.OnClickListener{
     private static final int TASK = 0;
     Button btSetDate,btSetAlarm,btChooseActivity, btAddAlarm;
-    String time, date, task, name;
+    String time, date, task="1", name;
     EditText etAlarmName;
 
 
@@ -29,6 +29,15 @@ public class NewAlarmActivity extends AppCompatActivity implements TimePickerDia
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_alarm);
+
+        TextView tvTask=(TextView) findViewById(R.id.tvTask);
+
+
+        if(getIntent() != null) {
+            task = getIntent().getStringExtra("task");
+            tvTask.setText(getIntent().getStringExtra("task"));
+
+        }
 
 
         btSetAlarm = (Button) findViewById(R.id.btSetAlarm);
@@ -82,15 +91,12 @@ public class NewAlarmActivity extends AppCompatActivity implements TimePickerDia
         }
         if(v== btChooseActivity){
             Intent intent= new Intent(this,ChooseAccountActivity.class);
-            TextView tvTask=(TextView) findViewById(R.id.tvTask);
-            tvTask.setText(getIntent().getStringExtra("task"));
-            task =getIntent().getStringExtra("task");
             startActivity(intent);
         }
         if(v == btAddAlarm){
             Intent intent= new Intent(this,AllAlarmsActivity.class);
             name =etAlarmName.getText().toString();
-            intent.putExtra("alram",new Alarm(R.drawable.alarm, name, time, date, task));
+            intent.putExtra("alarm",new Alarm(R.drawable.alarm, name, time, date, task));
             startActivity(intent);
         }
     }
