@@ -90,7 +90,7 @@ public class NewAlarmActivity extends AppCompatActivity implements TimePickerDia
             timePicker.show(getSupportFragmentManager(),"time picker");
         }
         if(v== btChooseActivity){
-            Intent intent= new Intent(this,ChooseAccountActivity.class);
+           Intent intent= new Intent(this,ChooseAccountActivity.class);
             startActivity(intent);
         }
         if(v == btAddAlarm){

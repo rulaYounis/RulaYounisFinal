@@ -61,6 +61,7 @@ public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
+
     }
 }
 /*
