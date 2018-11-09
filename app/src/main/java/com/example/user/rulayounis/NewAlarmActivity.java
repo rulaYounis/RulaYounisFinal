@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.text.DateFormat;
 import java.util.Calendar;
 
@@ -96,8 +99,15 @@ public class NewAlarmActivity extends AppCompatActivity implements TimePickerDia
         if(v == btAddAlarm){
             Intent intent= new Intent(this,AllAlarmsActivity.class);
             name =etAlarmName.getText().toString();
-            intent.putExtra("alarm",new Alarm(R.drawable.alarm, name, time, date, task));
+          //  intent.putExtra("alarm",new Alarm(R.drawable.alarm, name, time, date, task));
+            Alarm alarm = new Alarm(R.drawable.alarm, name, time, date, task);
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference newRef = database.getReference();//.child("Person").push();
+            newRef.child("Alarms").push().setValue(alarm);
+        //    newRef.setValue(alarm);
             startActivity(intent);
+
         }
     }
 }

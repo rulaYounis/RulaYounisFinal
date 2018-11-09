@@ -43,7 +43,7 @@ public class AlarmCustomAdapter extends ArrayAdapter<Alarm> {
 
 
             ImageView imageView = (ImageView) v.findViewById(R.id.imageView2);
-            imageView.setImageResource(p.getImage());
+            imageView.setImageResource(R.drawable.alarm);
         }
         return v;
 

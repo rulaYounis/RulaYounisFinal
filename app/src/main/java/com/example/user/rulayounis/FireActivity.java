@@ -34,7 +34,7 @@ public class FireActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fire);
         final FirebaseDatabase  database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef= database.getReference();
-        etEmail1= (EditText) findViewById(R.id.etEmail1);
+        etEmail1 = (EditText) findViewById(R.id.etEmail1);
         etPass = (EditText) findViewById(R.id.etPass);
         btSave=( Button) findViewById(R.id.btSave);
 /*        btSave.setOnClickListener(new View.OnClickListener() {

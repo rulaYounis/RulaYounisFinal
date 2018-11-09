@@ -9,7 +9,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+import java.util.Map;
 
 public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     ListView lvAllAlarms;
@@ -22,18 +29,53 @@ public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_alarms);
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef= database.getReference();
 
         lvAllAlarms= (ListView) findViewById(R.id.lvAllAlarms);
 
         items = new ArrayList<>();
-        Alarm alarm = (Alarm) getIntent().getSerializableExtra("alarm");
-        if(alarm != null){
-            items.add(alarm);
-        }
+        //final Alarm alarm = (Alarm) getIntent().getSerializableExtra("alarm");
+      //  if(alarm != null){
+     //       items.add(alarm);
+      //  }
         adapter= new AlarmCustomAdapter(this,R.layout.alarmcustom_row, items);
 
         lvAllAlarms.setAdapter(adapter);
         lvAllAlarms.setOnItemClickListener(this);
+
+        myRef.child("Alarms").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                Map<String,String> map = (Map<String, String>) dataSnapshot.getValue();
+                items.add(new Alarm(1,map.get("name"),map.get("time"),map.get("date"),map.get("task")));
+                adapter.notifyDataSetChanged();
+
+
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,6 +105,7 @@ public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.
 
 
     }
+
 }
 /*
 package com.example.user.rulayounis;
