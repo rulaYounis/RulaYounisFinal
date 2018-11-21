@@ -1,7 +1,10 @@
 package com.example.user.rulayounis;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -29,6 +32,24 @@ public class AllTasksActivity extends AppCompatActivity implements AdapterView.O
         lvAllTasks.setAdapter(adapter);
         lvAllTasks.setOnItemClickListener(this);
     }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu2, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.newTask:
+                Intent intent= new Intent(getApplication(),NewTaskActivity.class);
+                startActivity(intent);
+                break;
+
+        }
+        return true;
+
+    }
+
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
