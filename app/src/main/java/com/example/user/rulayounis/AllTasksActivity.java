@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class AllTasksActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class AllTasksActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
     ListView lvAllTasks;
     ArrayList<Item> items;
     CustomAdapter adapter;
@@ -31,6 +31,7 @@ public class AllTasksActivity extends AppCompatActivity implements AdapterView.O
         adapter = new CustomAdapter(this,R.layout.custom_row,items);
         lvAllTasks.setAdapter(adapter);
         lvAllTasks.setOnItemClickListener(this);
+        lvAllTasks.setOnItemLongClickListener(this);
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu2, menu);
@@ -54,5 +55,10 @@ public class AllTasksActivity extends AppCompatActivity implements AdapterView.O
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        return false;
     }
 }
