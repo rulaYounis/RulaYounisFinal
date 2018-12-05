@@ -23,10 +23,11 @@ import java.util.Calendar;
 public class NewAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener,View.OnClickListener{
     private static final int TASK = 0;
     Button btSetDate,btSetAlarm,btChooseActivity, btAddAlarm;
-    String time, date, task="1", name;
+    String time=null, date=null, task="1", name=null;
     EditText etAlarmName;
+    TextView tvTime,tvDate;
 
-
+    Alarm a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class NewAlarmActivity extends AppCompatActivity implements TimePickerDia
 
         }
 
-
+        tvDate =(TextView) findViewById(R.id.tvDate);
         btSetAlarm = (Button) findViewById(R.id.btSetAlarm);
         btSetAlarm.setOnClickListener(this);
         btChooseActivity = (Button) findViewById(R.id.btChooseActivity);
@@ -55,6 +56,15 @@ public class NewAlarmActivity extends AppCompatActivity implements TimePickerDia
 
         etAlarmName = findViewById(R.id.etAlarmName);
 
+        a = (Alarm) getIntent().getSerializableExtra("alarm");
+        if(a != null){
+            if(a.getName()!=null){
+                etAlarmName.setText(a.getName());
+            }else if(a.getDate()!=null){
+                tvDate.setText(a.getDate());
+            }
+
+        }
     }
 
     @Override
@@ -74,7 +84,7 @@ public class NewAlarmActivity extends AppCompatActivity implements TimePickerDia
         c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
         String currentDateString= DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
 
-        TextView tvDate =(TextView) findViewById(R.id.tvDate);
+
         date=dayOfMonth+"/"+month+"/"+year;
         tvDate.setText(currentDateString);
 
@@ -93,12 +103,15 @@ public class NewAlarmActivity extends AppCompatActivity implements TimePickerDia
             timePicker.show(getSupportFragmentManager(),"time picker");
         }
         if(v== btChooseActivity){
+            name =etAlarmName.getText().toString();
            Intent intent= new Intent(this,ChooseAccountActivity.class);
+
+            intent.putExtra("alarm",new Alarm(R.drawable.alarm, name, time, date, task));
             startActivity(intent);
         }
         if(v == btAddAlarm){
             Intent intent= new Intent(this,AllAlarmsActivity.class);
-            name =etAlarmName.getText().toString();
+
           //  intent.putExtra("alarm",new Alarm(R.drawable.alarm, name, time, date, task));
             Alarm alarm = new Alarm(R.drawable.alarm, name, time, date, task);
 

@@ -14,12 +14,14 @@ public class ChooseAccountActivity extends AppCompatActivity implements AdapterV
     ListView lvAccounts;
     ArrayAdapter<String> arrayAdapter;
     ArrayList<String> arrayList = new ArrayList<>();
-
+    Alarm a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_account);
         lvAccounts= (ListView) findViewById(R.id.lvAccounts);
+
+        a = (Alarm) getIntent().getSerializableExtra("alarm");
 
         arrayList.add("1");
         arrayList.add("2");
@@ -38,7 +40,9 @@ public class ChooseAccountActivity extends AppCompatActivity implements AdapterV
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(this, NewAlarmActivity.class);
-        i.putExtra("task", arrayList.get(position).toString());
+        //i.putExtra("task", arrayList.get(position).toString());s
+        a.setTask(arrayList.get(position).toString());
+        i.putExtra("alarm", a);
         startActivity(i);
 
     }
