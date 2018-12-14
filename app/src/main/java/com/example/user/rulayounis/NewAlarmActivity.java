@@ -37,6 +37,7 @@ public class NewAlarmActivity extends AppCompatActivity implements TimePickerDia
         TextView tvTask=(TextView) findViewById(R.id.tvTask);
 
 
+
         if(getIntent() != null) {
             task = getIntent().getStringExtra("task");
             tvTask.setText(getIntent().getStringExtra("task"));
@@ -44,6 +45,7 @@ public class NewAlarmActivity extends AppCompatActivity implements TimePickerDia
         }
 
         tvDate =(TextView) findViewById(R.id.tvDate);
+        tvTime=(TextView) findViewById(R.id.tvTime);
         btSetAlarm = (Button) findViewById(R.id.btSetAlarm);
         btSetAlarm.setOnClickListener(this);
         btChooseActivity = (Button) findViewById(R.id.btChooseActivity);
@@ -60,16 +62,21 @@ public class NewAlarmActivity extends AppCompatActivity implements TimePickerDia
         if(a != null){
             if(a.getName()!=null){
                 etAlarmName.setText(a.getName());
-            }else if(a.getDate()!=null){
-                tvDate.setText(a.getDate());
             }
+            if(a.getDate()!=null){
+                    tvDate.setText(a.getDate());
+            }
+            if(a.getTime()!=null)
+                tvTime.setText(a.getTime());
+
 
         }
     }
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        TextView tvTime=(TextView) findViewById(R.id.tvTime);
+
+
         time=hourOfDay+":"+minute;
         tvTime.setText(hourOfDay+":"+minute);
     }
