@@ -23,11 +23,11 @@ public class ChooseAccountActivity extends AppCompatActivity implements AdapterV
 
         a = (Alarm) getIntent().getSerializableExtra("alarm");
 
-        arrayList.add("1");
-        arrayList.add("2");
-        arrayList.add("3");
-        arrayList.add("4");
-        arrayList.add("5");
+        arrayList.add("memory task");
+        arrayList.add("rewrite task");
+        arrayList.add("math task");
+        arrayList.add("questions task");
+        arrayList.add("synonyms task");
         arrayAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arrayList);
         lvAccounts.setAdapter(arrayAdapter);
 

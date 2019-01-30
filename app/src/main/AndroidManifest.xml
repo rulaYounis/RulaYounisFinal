@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.rulayounis">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -28,7 +28,8 @@
         <activity android:name=".AllTasksActivity" />
         <activity android:name=".FireActivity" />
         <activity android:name=".AllAlarmsActivity" />
-        <activity android:name=".SharedActivity"></activity>
+        <activity android:name=".SharedActivity" />
+        <activity android:name=".RewriteActivity"></activity>
     </application>
 
 </manifest>
