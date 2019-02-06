@@ -21,9 +21,14 @@
         android:hint="rewrite the sentence you see"
         android:inputType="textPersonName" />
 
+    <Button
+        android:id="@+id/btCheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="check" />
+
     <TextView
         android:id="@+id/tvSuccess"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_height="wrap_content" />
 </LinearLayout>

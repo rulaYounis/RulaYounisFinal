@@ -23,9 +23,9 @@ import java.util.Calendar;
 public class NewAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener,View.OnClickListener{
     private static final int TASK = 0;
     Button btSetDate,btSetAlarm,btChooseActivity, btAddAlarm;
-    String time=null, date=null, task="1", name=null;
+    String time=null, date=null, task=null, name=null;
     EditText etAlarmName;
-    TextView tvTime,tvDate;
+    TextView tvTime,tvDate,tvTask;
 
     Alarm a;
 
@@ -34,15 +34,15 @@ public class NewAlarmActivity extends AppCompatActivity implements TimePickerDia
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_alarm);
 
-        TextView tvTask=(TextView) findViewById(R.id.tvTask);
+         tvTask=(TextView) findViewById(R.id.tvTask);
 
 
 
-        if(getIntent() != null) {
-            task = getIntent().getStringExtra("task");
-            tvTask.setText(getIntent().getStringExtra("task"));
+       // if(getIntent() != null) {
+           // task = getIntent().getStringExtra("task");
+           // tvTask.setText(getIntent().getStringExtra("task"));
 
-        }
+       // }
 
         tvDate =(TextView) findViewById(R.id.tvDate);
         tvTime=(TextView) findViewById(R.id.tvTime);
@@ -61,13 +61,20 @@ public class NewAlarmActivity extends AppCompatActivity implements TimePickerDia
         a = (Alarm) getIntent().getSerializableExtra("alarm");
         if(a != null){
             if(a.getName()!=null){
-                etAlarmName.setText(a.getName());
+                etAlarmName.setText(a.getName().toString());
+                name=etAlarmName.getText().toString();
             }
             if(a.getDate()!=null){
                     tvDate.setText(a.getDate());
+                    date= tvDate.getText().toString();
             }
             if(a.getTime()!=null)
                 tvTime.setText(a.getTime());
+            time=tvTime.getText().toString();
+            if(a.getTask()!=null)
+                tvTask.setText(a.getTask());
+            task=tvTask.getText().toString();
+
 
 
         }
