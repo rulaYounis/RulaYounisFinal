@@ -29,7 +29,8 @@
         <activity android:name=".FireActivity" />
         <activity android:name=".NewAlarmActivity" />
         <activity android:name=".SharedActivity" />
-        <activity android:name=".AllAlarmsActivity"></activity>
+        <activity android:name=".AllAlarmsActivity" />
+        <activity android:name=".MemoryActivity"></activity>
     </application>
 
 </manifest>
