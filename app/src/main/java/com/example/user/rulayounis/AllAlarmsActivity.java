@@ -1,5 +1,8 @@
 package com.example.user.rulayounis;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,9 +19,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
-public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,AdapterView.OnItemLongClickListener {
     ListView lvAllAlarms;
     ArrayList<Alarm> items;
     AlarmCustomAdapter adapter;
@@ -43,6 +48,8 @@ public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.
 
         lvAllAlarms.setAdapter(adapter);
         lvAllAlarms.setOnItemClickListener(this);
+        lvAllAlarms.setOnItemLongClickListener(this);
+
 
         myRef.child("Alarms").addChildEventListener(new ChildEventListener() {
             @Override
@@ -105,8 +112,44 @@ public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.
 
 
     }
+    public void start() {
+        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Date dat = new Date();
+        Calendar cal_alarm = Calendar.getInstance();
+        Calendar cal_now = Calendar.getInstance();
+        cal_now.setTime(dat);
+        cal_alarm.setTime(dat);
+        cal_alarm.set(Calendar.HOUR_OF_DAY, 11);
+        cal_alarm.set(Calendar.MINUTE, 42);
+        cal_alarm.set(Calendar.SECOND, 0);
+        if (cal_alarm.before(cal_now)) {
+            cal_alarm.add(Calendar.DATE, 1);
+        }
 
+        Intent myIntent = new Intent(this, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
+
+        manager.set(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis(), pendingIntent);
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+        Intent i = new Intent(this,CameraGalleryActivity.class);
+        startActivity(i);
+        return true;
+    }
 }
+
+
+
+
+
+
+
+
+
+
 /*
 package com.example.user.rulayounis;
 
