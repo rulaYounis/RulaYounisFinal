@@ -55,12 +55,14 @@ public class CameraGalleryActivity extends AppCompatActivity implements View.OnC
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode== CAMERA_REQUEST && resultCode== Activity.RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
-            cameraImage.setImageBitmap(photo);
+
             String imagePath= saveImage(photo);
             SharedPreferences pref = getSharedPreferences("mypref",MODE_PRIVATE);
             SharedPreferences.Editor editor = pref.edit();
             editor.putString("image",imagePath);
             editor.commit();
+            cameraImage.setImageBitmap(photo);
+
 
             // Toast.makeText(this, "inside capture", Toast.LENGTH_LONG).show();
         }
