@@ -125,7 +125,7 @@ public class NewAlarmActivity extends AppCompatActivity implements TimePickerDia
         }
         if(v == btAddAlarm){
             Intent intent= new Intent(this,AllAlarmsActivity.class);
-
+            intent.putExtra("alarm",new Alarm(R.drawable.alarm, name, time, date, task));
           //  intent.putExtra("alarm",new Alarm(R.drawable.alarm, name, time, date, task));
             Alarm alarm = new Alarm(R.drawable.alarm, name, time, date, task);
 

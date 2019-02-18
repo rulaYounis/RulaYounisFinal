@@ -135,7 +135,10 @@ public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
+        Alarm a = (Alarm) getIntent().getSerializableExtra("alarm");
+
         Intent i = new Intent(this,CameraGalleryActivity.class);
+        i.putExtra("alarm",a);
         startActivity(i);
         return true;
     }
