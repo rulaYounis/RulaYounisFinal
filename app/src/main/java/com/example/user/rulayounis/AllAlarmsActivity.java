@@ -27,7 +27,7 @@ public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.
     ListView lvAllAlarms;
     ArrayList<Alarm> items;
     AlarmCustomAdapter adapter;
-
+    private static final int NOTIFICATION_REMINDER_NIGHT = 3;
 
 
     @Override
@@ -36,6 +36,19 @@ public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.
         setContentView(R.layout.activity_all_alarms);
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef= database.getReference();
+
+        Intent notifyIntent = new Intent(this,MyReceiver.class);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast
+
+                (this, NOTIFICATION_REMINDER_NIGHT, notifyIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),
+
+                1000 * 60 * 60 * 24, pendingIntent);
 
         lvAllAlarms= (ListView) findViewById(R.id.lvAllAlarms);
 
@@ -142,6 +155,7 @@ public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.
         startActivity(i);
         return true;
     }
+
 }
 
 

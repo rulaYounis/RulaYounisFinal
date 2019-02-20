@@ -30,9 +30,17 @@
         <activity android:name=".NewAlarmActivity" />
         <activity android:name=".SharedActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".MemoryActivity"></activity>
-        <receiver android:name=".AlarmReceiver" />
+        <activity android:name=".MemoryActivity" />
 
+        <receiver android:name=".AlarmReceiver" />
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name=".MyNewIntentService"
+            android:exported="false"></service>
     </application>
 
 </manifest>
