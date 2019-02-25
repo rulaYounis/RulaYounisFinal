@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AllAlarmsActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +29,7 @@
         <activity android:name=".FireActivity" />
         <activity android:name=".NewAlarmActivity" />
         <activity android:name=".SharedActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".AllAlarmsActivity" />
         <activity android:name=".MemoryActivity" />
 
         <receiver android:name=".AlarmReceiver" />
@@ -41,6 +41,10 @@
         <service
             android:name=".MyNewIntentService"
             android:exported="false" />
+        <service
+            android:name=".MusicService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

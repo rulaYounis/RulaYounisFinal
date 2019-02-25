@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPassword= (EditText) findViewById(R.id.etPassword);
+        Intent sr = new Intent(this,MusicService.class);
+        startService(sr);
     }
 
    // @Override
