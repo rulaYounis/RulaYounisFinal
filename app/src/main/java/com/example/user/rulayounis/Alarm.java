@@ -3,13 +3,13 @@ package com.example.user.rulayounis;
 import java.io.Serializable;
 
 public class Alarm implements Serializable {
-    private int image;
+    private String image;
     private String name;
     private String time;
     private String date;
     private String task;
 
-    public Alarm(int image, String name, String time, String date, String task) {
+    public Alarm(String image, String name, String time, String date, String task) {
         this.image = image;
         this.name = name;
         this.time = time;
@@ -17,11 +17,11 @@ public class Alarm implements Serializable {
         this.task = task;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
