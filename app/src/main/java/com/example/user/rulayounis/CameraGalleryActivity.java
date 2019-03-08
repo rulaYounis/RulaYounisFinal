@@ -17,6 +17,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,8 +33,9 @@ public class CameraGalleryActivity extends AppCompatActivity implements View.OnC
     ImageView cameraImage;
     Button btGallery,btTakePhoto;
 
-    Bitmap bitmap;
-    Bitmap photo;
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    final DatabaseReference myRef= database.getReference();
+    Alarm alarm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,7 @@ public class CameraGalleryActivity extends AppCompatActivity implements View.OnC
         btTakePhoto = (Button) findViewById(R.id.btTakePhoto);
         btTakePhoto.setOnClickListener(this);
 
+        alarm = (Alarm) getIntent().getSerializableExtra("alarm");
     }
 
     @Override
@@ -62,44 +68,14 @@ public class CameraGalleryActivity extends AppCompatActivity implements View.OnC
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode== CAMERA_REQUEST && resultCode== Activity.RESULT_OK) {
 
-            //Bitmap photo = (Bitmap) data.getExtras().get("data");
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
             cameraImage.setImageBitmap(photo);
-            BitMapToString(photo);
-            Alarm a = (Alarm) getIntent().getSerializableExtra("alarm");
+            String image  = BitMapToString(photo);
+            alarm.setImage(image);
+            myRef.child("Alarms").child(alarm.getKey()).setValue(alarm);
 
-
-            String imagePath= saveImage(photo);
-            SharedPreferences pref = getSharedPreferences("mypref",MODE_PRIVATE);
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putString("image",imagePath);
-            editor.commit();
-
-
-
-            // Toast.makeText(this, "inside capture", Toast.LENGTH_LONG).show();
         }
     }
-
-    public String saveImage(Bitmap bitmap){
-        File root = Environment.getExternalStorageDirectory();
-        String timeStamp  =new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String filePath = root.getAbsolutePath()+"/DCIM/Camera/IMG_"+timeStamp+".jpg";
-        File file = new File(filePath);
-        try
-        {
-            file.createNewFile() ;
-            FileOutputStream ostream = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.JPEG,100,ostream);
-            ostream.close();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            Toast.makeText(this,"failed to save image",Toast.LENGTH_SHORT).show();
-        }
-        return filePath;
-    }
-
 
     @RequiresApi(api = Build.VERSION_CODES.FROYO)
     public String BitMapToString(Bitmap bitmap) {

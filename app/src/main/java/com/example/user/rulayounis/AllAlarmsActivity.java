@@ -69,10 +69,10 @@ public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
                 Map<String,String> map = (Map<String, String>) dataSnapshot.getValue();
-                items.add(new Alarm(1,map.get("name"),map.get("time"),map.get("date"),map.get("task")));
+                String key = dataSnapshot.getKey();
+                Alarm alarm =  new Alarm("",map.get("name"),map.get("time"),map.get("date"),map.get("task"), key);
+                items.add(alarm);
                 adapter.notifyDataSetChanged();
-
-
 
             }
 

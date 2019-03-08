@@ -8,6 +8,7 @@ public class Alarm implements Serializable {
     private String time;
     private String date;
     private String task;
+    private String key;
 
     public Alarm(String image, String name, String time, String date, String task) {
         this.image = image;
@@ -17,6 +18,21 @@ public class Alarm implements Serializable {
         this.task = task;
     }
 
+    public Alarm(String image, String name, String time, String date, String task, String key) {
+        this.image = image;
+        this.name = name;
+        this.time = time;
+        this.date = date;
+        this.task = task;
+        this.key = key;
+    }
+    public Alarm(int image, String name, String time, String date, String task) {
+        //this.image = image;
+        this.name = name;
+        this.time = time;
+        this.date = date;
+        this.task = task;
+    }
     public String getImage() {
         return image;
     }
@@ -55,5 +71,9 @@ public class Alarm implements Serializable {
 
     public void setTask(String task) {
         this.task = task;
+    }
+
+    public String getKey() {
+        return key;
     }
 }
