@@ -50,6 +50,7 @@ public class CameraGalleryActivity extends AppCompatActivity implements View.OnC
         btTakePhoto.setOnClickListener(this);
 
         alarm = (Alarm) getIntent().getSerializableExtra("alarm");
+
     }
 
     @Override
@@ -69,10 +70,14 @@ public class CameraGalleryActivity extends AppCompatActivity implements View.OnC
         if(requestCode== CAMERA_REQUEST && resultCode== Activity.RESULT_OK) {
 
             Bitmap photo = (Bitmap) data.getExtras().get("data");
-            cameraImage.setImageBitmap(photo);
             String image  = BitMapToString(photo);
-            alarm.setImage(image);
-            myRef.child("Alarms").child(alarm.getKey()).setValue(alarm);
+            if(alarm != null) {
+                alarm.setImage(image);
+                myRef.child("Alarms").child(alarm.getKey()).setValue(alarm);
+                cameraImage.setImageBitmap(photo);
+            }
+            Intent i = new Intent(getApplicationContext(), AllAlarmsActivity.class);
+            startActivity(i);
 
         }
     }

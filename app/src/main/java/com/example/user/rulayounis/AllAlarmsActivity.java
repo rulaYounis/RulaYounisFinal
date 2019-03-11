@@ -70,7 +70,7 @@ public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.
 
                 Map<String,String> map = (Map<String, String>) dataSnapshot.getValue();
                 String key = dataSnapshot.getKey();
-                Alarm alarm =  new Alarm("",map.get("name"),map.get("time"),map.get("date"),map.get("task"), key);
+                Alarm alarm =  new Alarm(map.get("image"),map.get("name"),map.get("time"),map.get("date"),map.get("task"), key);
                 items.add(alarm);
                 adapter.notifyDataSetChanged();
 
@@ -148,7 +148,7 @@ public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-        Alarm a = (Alarm) getIntent().getSerializableExtra("alarm");
+        Alarm a = items.get(position);
 
         Intent i = new Intent(this,CameraGalleryActivity.class);
         i.putExtra("alarm",a);

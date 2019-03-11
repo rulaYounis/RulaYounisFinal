@@ -27,7 +27,7 @@ public class Alarm implements Serializable {
         this.key = key;
     }
     public Alarm(int image, String name, String time, String date, String task) {
-        //this.image = image;
+        this.image = null;
         this.name = name;
         this.time = time;
         this.date = date;

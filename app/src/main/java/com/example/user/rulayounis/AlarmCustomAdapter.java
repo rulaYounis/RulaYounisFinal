@@ -1,14 +1,18 @@
 package com.example.user.rulayounis;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -43,9 +47,27 @@ public class AlarmCustomAdapter extends ArrayAdapter<Alarm> {
 
 
             ImageView imageView = (ImageView) v.findViewById(R.id.imageView2);
-            imageView.setImageResource(R.drawable.alarm);
-        }
+            if(!p.getImage().equals("")){
+                Bitmap image = StringToBitMap(p.getImage());
+                Toast.makeText(mContext, p.getImage(), Toast.LENGTH_LONG).show();
+                imageView.setImageBitmap(image);
+            }else {
+                imageView.setImageResource(R.drawable.alarm);
+            }
+       }
         return v;
 
+
+    }
+    public Bitmap StringToBitMap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0,
+                    encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
     }
 }
