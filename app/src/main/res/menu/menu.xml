@@ -4,7 +4,4 @@
     <item
         android:id="@+id/NewAlarm"
         android:title="New Alarm" />
-    <item
-        android:id="@+id/AllTasks"
-        android:title="AllTasks" />
 </menu>

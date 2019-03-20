@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewAlarmActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,15 +21,15 @@
         <activity android:name=".AlertDialogActivity" />
         <activity android:name=".ListActivity" />
         <activity android:name=".ChooseAccountActivity" />
-        <activity android:name=".RewriteActivity" />
+        <activity android:name=".NewAlarmActivity" />
         <activity android:name=".CameraGalleryActivity" />
         <activity android:name=".NewTaskActivity" />
         <activity android:name=".AddActivityActivity" />
         <activity android:name=".AllTasksActivity" />
         <activity android:name=".FireActivity" />
-        <activity android:name=".AllAlarmsActivity" />
+        <activity android:name=".RewriteActivity" />
         <activity android:name=".SharedActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".AllAlarmsActivity" />
         <activity android:name=".MemoryActivity" />
 
         <receiver android:name=".AlarmReceiver" />

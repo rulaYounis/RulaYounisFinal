@@ -110,10 +110,10 @@ public class AllAlarmsActivity extends AppCompatActivity implements AdapterView.
                 Intent intent= new Intent(getApplication(),NewAlarmActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.AllTasks:
-                Intent intent1= new Intent(getApplication(),AllTasksActivity.class);
-                startActivity(intent1);
-                break;
+           // case R.id.AllTasks:
+              //  Intent intent1= new Intent(getApplication(),AllTasksActivity.class);
+               // startActivity(intent1);
+               // break;
         }
         return true;
 

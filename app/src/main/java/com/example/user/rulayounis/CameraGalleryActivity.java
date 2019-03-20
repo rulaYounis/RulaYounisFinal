@@ -30,7 +30,7 @@ import java.util.Date;
 public class CameraGalleryActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final int CAMERA_REQUEST = 0;
-    ImageView cameraImage;
+   // ImageView cameraImage;
     Button btGallery,btTakePhoto;
 
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -42,9 +42,9 @@ public class CameraGalleryActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_gallery);
 
-        cameraImage = (ImageView) findViewById(R.id.cameraImage);
+       // cameraImage = (ImageView) findViewById(R.id.cameraImage);
 
-        btGallery = (Button) findViewById(R.id.btGallery);
+        //btGallery = (Button) findViewById(R.id.btGallery);
         btGallery.setOnClickListener(this);
         btTakePhoto = (Button) findViewById(R.id.btTakePhoto);
         btTakePhoto.setOnClickListener(this);
@@ -74,7 +74,7 @@ public class CameraGalleryActivity extends AppCompatActivity implements View.OnC
             if(alarm != null) {
                 alarm.setImage(image);
                 myRef.child("Alarms").child(alarm.getKey()).setValue(alarm);
-                cameraImage.setImageBitmap(photo);
+               // cameraImage.setImageBitmap(photo);
             }
             Intent i = new Intent(getApplicationContext(), AllAlarmsActivity.class);
             startActivity(i);
