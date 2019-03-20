@@ -45,7 +45,7 @@ public class CameraGalleryActivity extends AppCompatActivity implements View.OnC
        // cameraImage = (ImageView) findViewById(R.id.cameraImage);
 
         //btGallery = (Button) findViewById(R.id.btGallery);
-        btGallery.setOnClickListener(this);
+       // btGallery.setOnClickListener(this);
         btTakePhoto = (Button) findViewById(R.id.btTakePhoto);
         btTakePhoto.setOnClickListener(this);
 
